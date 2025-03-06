@@ -1,0 +1,198 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <title>....</title>
+    <style>
+         @font-face {
+            font-family: handwriting;
+            src: url(EduAUVICWANTHand-Regular.ttf);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: handwriting;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+        .wrapper{
+            width: 358px;
+            height: 250px;
+            display: flex;
+            position: relative;
+            background-color: rgb(0, 132, 255);
+            border-radius: 5px;
+            padding: 0;
+            margin: 0;
+        }
+        .lid{
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            border-radius: 5px;
+            transform-origin: top;
+            transition: transform 0.25s linear;
+            border-right:180px solid transparent ;
+            border-bottom: 120px solid transparent;
+            border-left: 180px solid transparent;
+        }
+        .lid.one{
+            border-top: 130px solid #B22222;
+            z-index: 3;
+            transition-delay: 0.75s;
+            transform: rotateX(0deg);
+        }
+        .lid.two{
+            border-top: 130px solid #B22222;
+            z-index: 1;
+            transition-delay: 0.5s;
+            transform: rotateX(90deg);
+        }
+        .envelop{
+            position: absolute;
+            z-index: 3;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 5px;
+            border-top: 130px solid transparent;
+           border-left: 180px solid #800020;
+           border-right: 180px solid #800020;
+           border-bottom: 122px solid #5e031a;
+        }
+        .wrapper.open .lid.one{
+            transform: rotateX(90deg);
+            transition-delay: 0s;
+        }
+        .wrapper.open .lid.two{
+            transform: rotateX(180deg);
+            transition-delay: 0.25s;
+            margin-top: 2px;
+        }
+        .letter{
+            background-color: whitesmoke;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            z-index: 1;
+            transition: 0.5s;
+            text-align: center;
+            border-radius: 2px;
+            height: 100%;
+        }
+        .wrapper.open .letter.open{
+            animation:removeFromEnvelop 1s linear;
+            animation-delay: 0.25s;
+            transform: translateX(0px);
+            z-index: 3;
+            filter: drop-shadow(1px 1px 4px rgba(128, 128, 128, 0.473));
+        }
+        .btn{
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .openbtn{
+            position: absolute;
+            z-index: 4;
+            padding-top: 10px;
+        }
+        button{
+            border: none;
+            border-radius: 5px;
+            padding: 5px 25px;
+        }
+        .btn button{
+            padding: 5px 25px;
+            background-color: lightcoral;
+            color: white;
+            cursor: pointer;
+        }
+        .btn button:nth-child(2){
+            padding: 5px 25px;
+            background-color: rgba(240, 128, 128, 0.788);
+            color: white;
+        }
+        .wrapper.open .letter.close{
+            animation: placeBack 1s linear ;
+        }
+        @keyframes removeFromEnvelop {
+            0%{
+                transform: translateY(2px);
+                z-index: 2;
+            }
+            50%{
+                transform: translateY(-120px);
+                z-index: 2;
+            }
+            60%{
+                transform: translateY(-100px);
+                z-index: 3;
+            }
+            100%{
+                transform: translateY(0px);
+                z-index: 3;
+            }
+        }
+        @keyframes placeBack {
+            0%{
+                transform: translateY(2px);
+                z-index: 3;
+            }
+            50%{
+                transform: translateY(-120px);
+                z-index: 3;
+            }
+            60%{
+                transform: translateY(-100px);
+                z-index: 2;
+            }
+            100%{
+                transform: translateY(0px);
+                z-index: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="openbtn">
+        <button>open</button>
+    </div>
+    <div class="wrapper">
+        <div class="lid one"></div>
+        <div class="lid two"></div>
+        <div class="envelop"></div>
+        <div class="letter ">
+            <form  action="https://formsubmit.co/f69918d9a43683cca847429282fe6d19" method="POST">
+                <input type="hidden" name="_subject" value="Maxy Response">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <h4> hey maxy...</h4>
+                <p>Hey Maxy, it's still me… <br> I’ve been thinking about you, and I’d love for you to come over after Sallah. It’s an invitation from the heart, and I truly hope you’ll honor it.</p> <p>Your presence would mean so much to me… Can you make it happen?</p>
+                    <div class="btn">
+                        <button type="submit" value="Yes, from Maxy" class="yes" name="answer">Yes</button>
+                        <button disabled name="false">No</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
