@@ -1,4 +1,4 @@
-const openBtn = document.querySelector('.openBtn button')
+const openBtn = document.querySelector('.btnOpen')
 openBtn.addEventListener('click',(e)=>{
     e.preventDefault()
     const wrapper = document.querySelector('.wrapper')
